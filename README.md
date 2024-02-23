@@ -1,47 +1,50 @@
 # Facial Verification System
 
+```
+Facial detection & verification w/ machine learning
+```
 
-## Plan
 
-### 1. Define Requirements
-   - Determine the purpose of the facial recognition system.
-   - Define the scope and requirements of the system (e.g., recognition accuracy, speed, scalability).
+## Brief
 
-### 2. Data Collection
-   - Gather a dataset of facial images. Ensure the dataset is diverse and representative of the target population.
-   - Label each image with the identity of the person.
+I employ **scikit-learn** to apply facial recognition & verification machine learning algorithms to a collection of JPEG images of people collected over the internet, from the **Labeled Faces in the Wild** dataset.
 
-### 3. Data Preprocessing
-   - Preprocess the images to ensure they are of consistent size and quality.
-   - Convert images to a format suitable for input to the machine learning model (e.g., grayscale, resized).
+### Directory Structure
 
-### 4. Feature Extraction
-   - Use techniques such as Principal Component Analysis (PCA) or Local Binary Patterns (LBP) to extract features from the facial images.
-   - Feature extraction helps in reducing the dimensionality of the data and extracting relevant information for classification.
+- **notebooks/**
+  - `preprocessing.ipynb` 
+    - Data is loaded into numPy arrays
+    - Split into training & testing data
 
-### 5. Model Selection and Training
-   - Choose an appropriate machine learning algorithm for classification (e.g., Support Vector Machines, k-Nearest Neighbors).
-   - Split the dataset into training and testing sets.
-   - Train the model using the training data.
+  - `data_exploration.ipynb` 
+    - TODO
+    - TODO
 
-### 6. Model Evaluation
-   - Evaluate the trained model using the testing data to assess its performance.
-   - Measure metrics such as accuracy, precision, recall, and F1-score.
+  - `model_training.ipynb` Machine Learning Model Training
+    - TODO
+    - TODO
 
-### 7. Fine-tuning and Optimization
-   - Fine-tune the model hyperparameters to improve performance.
-   - Consider techniques such as grid search or random search for hyperparameter optimization.
+- `README.md`
 
-### 8. Deployment
-   - Integrate the trained model into a usable application or system.
-   - Implement user interface components for capturing and processing facial images.
-   - Ensure the system is robust and efficient for real-world usage.
 
-### 9. Testing and Validation
-   - Test the deployed system with new data to ensure it performs as expected.
-   - Validate the system's accuracy and reliability in various scenarios and conditions.
+## Mathematical Theory
 
-### 10. Maintenance and Updates
-    - Regularly update the facial recognition system with new data to improve its performance.
-    - Monitor system performance and address any issues or bugs that arise.
-    - Stay updated with advancements in facial recognition technology and incorporate relevant improvements into the system.
+### StandardScaler Module
+
+Standardise features by removing the mean & scaling them to have unit variance. This is a process uses the theory of z-score and is very common to many ML algorithms.
+
+#### What?
+
+- **Standardisation**: The process of transforming data in such a way that it has a standard scale. Standardised data has a normal distribution (spread of values) with a mean of zero & a standard deviation of one.
+
+- **Removing the Mean**: The mean value of a feature is subtracted from each data point in that feature. Centers data around zero. 
+
+- **Unit Variance**: Variance measures the spread of data points around the mean. For the condition of unit variance, the variance of each feature is equal to one. This helps ML algorithms to interpret & compare the data.
+
+- **Z-Score**: Represents the number of standard deviations a data point is from the mean of the feature. For a data point with value _x_, $$z = (x - μ) / σ$$ where _z_ = Z-Score, _μ_ = mean, _σ_ = standard devation.
+
+### Principal Component Analysis (PCA)
+
+
+  
+  
