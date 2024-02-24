@@ -9,18 +9,17 @@ Facial detection & verification w/ machine learning
 
 I employ **scikit-learn** to apply facial recognition & verification machine learning algorithms to a collection of JPEG images of people collected over the internet, from the **Labeled Faces in the Wild** dataset.
 
+The type of ML algorithm is **support vector classification (SVC)** with **principal component analysis (PCA)** for dimensionality reduction. This model achieves an accuracy of 87%.
+
 ### Directory Structure
 
 - **notebooks/**
-  - `preprocessing.ipynb` 
-    - Data is loaded into numPy arrays.
-    - Split into training & testing data.
+  - `SVC_PCA_ML.ipynb` 
 
-  - `data_exploration.ipynb` 
-    - Data dimenionality reduction using principal component analysis (PCA).
-
-  - `model_training.ipynb`
-    - Support Vector Machine (SVM) classifier model using RandomizedSearchCV for parameter (_C_, _gamma_) tuning.
+- **results/**
+  - `quantitative.png`
+  - `qualitative1.png`
+  - `qualitative2.png`
 
 - `README.md`
 
@@ -81,6 +80,58 @@ Performs hyperparameter tuning for ML models using randomised search.
 
 #### sklearn.svm.SVC
 
-Implements support vector machine (SVM) algorithm for classification.
+Implements C-support vector machine (SVM) algorithm for classification.
 
-- **g**
+
+## Model Evaluation & Conclusion
+
+### Quantitative Testing
+
+From **sklearn.metrics**, **ConfusionMatrixDisplay** & **classification_report** are used to generate quantitative analysis tables.
+
+|                  | Precision | Recall | F1-Score | Support |
+|------------------|-----------|--------|----------|---------|
+| Ariel Sharon     | 0.62      | 0.62   | 0.62     | 13      |
+| Colin Powell     | 0.74      | 0.90   | 0.81     | 60      |
+| Donald Rumsfeld  | 0.83      | 0.74   | 0.78     | 27      |
+| George W Bush    | 0.93      | 0.95   | 0.94     | 146     |
+| Gerhard Schroeder| 0.91      | 0.80   | 0.85     | 25      |
+| Hugo Chavez      | 0.89      | 0.53   | 0.67     | 15      |
+| Tony Blair       | 0.94      | 0.83   | 0.88     | 36      |
+| **Accuracy**     |           |        | **0.87** | **322** |
+| **Macro Avg**    | 0.84      | 0.77   | 0.79     | 322     |
+| **Weighted Avg** | 0.87      | 0.87   | 0.86     | 322     |
+
+
+- **F1-Score**: Represents the mean of precision & recall.
+
+- **Precision**: Ratio of true positives compared to all positive predictions. Accuracy of positive predictions.
+
+- **Recall**: Ratio of true positives compared to all actual positives. Relates to how many instances of a person's identification are successful.
+
+- **Support**: Occurences of each person in the test data set.
+
+- **Accuracy**: Overall measure of model accuracy, taking into account average F1-Score vs total person counts.
+
+- **Macro Average**: Weighted average of precision, recall & F1-Score, ignoring support.
+
+- **Weighted Average**: Macro average, including support.
+
+### Qualitative Testing
+
+Eigenfaces are used as the basis for analysing facial imagery. The predicted faces gallery showcases the application of the ML model in classification, based upon eigenfacial data.
+
+Eigenfaces are the principal components obtained through PCA applied to this data set. In simple terms, they capture the essential facial features & variations present in a person's face to predict who's who. They represent the most important variations in the data set ordered from most important w/ largest variation to least.
+
+### Reliability, Efficiency, Accuracy
+
+The model maintains an accuracy of 87% when predicting the class label (person identity) correctly.
+
+Analysing each classes' performance individually is essential for concluding this ML model's strength. For classes with larger support values, it is clear to see that the F1-Score is much higher. This is an obvious revelation, as usually, a larger test sample size correlates to a more reliable result.
+
+| Class           | Images | F1-Score |
+|-----------------|---------------|----------|
+| George Bush     | 46            | 0.94     |
+| Hugo Chavez     | 15            | 0.67     |
+
+High-efficiency in data processing can be implied from the fast prediciton time of sub-100ms.
